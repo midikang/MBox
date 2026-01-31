@@ -143,46 +143,48 @@ public partial class Form1 : Form
             ImageCodecInfo? jpegCodec = GetEncoderInfo("image/jpeg");
             
             // Create encoder parameters
-            EncoderParameters encoderParams = new EncoderParameters(1);
-            encoderParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)quality);
+            using (EncoderParameters encoderParams = new EncoderParameters(1))
+            {
+                encoderParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)quality);
 
-            // Determine output format based on file extension
-            string extension = Path.GetExtension(outputFile).ToLower();
-            
-            if (extension == ".jpg" || extension == ".jpeg")
-            {
-                if (jpegCodec != null)
+                // Determine output format based on file extension
+                string extension = Path.GetExtension(outputFile).ToLower();
+                
+                if (extension == ".jpg" || extension == ".jpeg")
                 {
-                    image.Save(outputFile, jpegCodec, encoderParams);
+                    if (jpegCodec != null)
+                    {
+                        image.Save(outputFile, jpegCodec, encoderParams);
+                    }
+                    else
+                    {
+                        image.Save(outputFile, ImageFormat.Jpeg);
+                    }
+                }
+                else if (extension == ".png")
+                {
+                    // PNG uses lossless compression - quality setting does not apply
+                    image.Save(outputFile, ImageFormat.Png);
+                }
+                else if (extension == ".bmp")
+                {
+                    image.Save(outputFile, ImageFormat.Bmp);
+                }
+                else if (extension == ".gif")
+                {
+                    image.Save(outputFile, ImageFormat.Gif);
                 }
                 else
                 {
-                    image.Save(outputFile, ImageFormat.Jpeg);
-                }
-            }
-            else if (extension == ".png")
-            {
-                // PNG compression
-                image.Save(outputFile, ImageFormat.Png);
-            }
-            else if (extension == ".bmp")
-            {
-                image.Save(outputFile, ImageFormat.Bmp);
-            }
-            else if (extension == ".gif")
-            {
-                image.Save(outputFile, ImageFormat.Gif);
-            }
-            else
-            {
-                // Default to JPEG
-                if (jpegCodec != null)
-                {
-                    image.Save(outputFile, jpegCodec, encoderParams);
-                }
-                else
-                {
-                    image.Save(outputFile, ImageFormat.Jpeg);
+                    // Default to JPEG
+                    if (jpegCodec != null)
+                    {
+                        image.Save(outputFile, jpegCodec, encoderParams);
+                    }
+                    else
+                    {
+                        image.Save(outputFile, ImageFormat.Jpeg);
+                    }
                 }
             }
         }
