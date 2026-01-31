@@ -93,6 +93,7 @@ Markdown        3        116          0         34
 |------|------|------|------|------|
 | btnSelectFiles | Button | (12, 12) | 120×30 | ✅ |
 | btnClearList | Button | (138, 12) | 120×30 | ✅ |
+| btnSelectFolder | Button | (264, 12) | 120×30 | ✅ |
 | listBoxFiles | ListBox | (12, 48) | 760×174 | ✅ |
 | txtOutputFolder | TextBox | (100, 233) | 546×25 | ✅ |
 | btnSelectOutput | Button | (652, 230) | 120×30 | ✅ |
@@ -108,6 +109,7 @@ Markdown        3        116          0         34
 | 事件 | 方法 | 功能 | 状态 |
 |------|------|------|------|
 | btnSelectFiles.Click | btnSelectFiles_Click | 打开文件选择对话框 | ✅ |
+| btnSelectFolder.Click | btnSelectFolder_Click | 选择文件夹导入图片 | ✅ |
 | btnClearList.Click | btnClearList_Click | 清空文件列表 | ✅ |
 | btnSelectOutput.Click | btnSelectOutput_Click | 选择输出目录 | ✅ |
 | trackBarQuality.Scroll | trackBarQuality_Scroll | 更新质量标签 | ✅ |

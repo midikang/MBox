@@ -6,6 +6,14 @@ namespace ImageSmall;
 public partial class Form1 : Form
 {
     private List<string> selectedFiles = new List<string>();
+    private static readonly HashSet<string> SupportedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".bmp",
+        ".gif"
+    };
     
     public Form1()
     {
@@ -23,16 +31,38 @@ public partial class Form1 : Form
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (string file in openFileDialog.FileNames)
+                AddFiles(openFileDialog.FileNames);
+            }
+        }
+    }
+
+    private void btnSelectFolder_Click(object? sender, EventArgs e)
+    {
+        using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+        {
+            folderBrowserDialog.Description = "选择图片文件夹";
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
                 {
-                    if (!selectedFiles.Contains(file))
+                    List<string> files = Directory
+                        .EnumerateFiles(folderBrowserDialog.SelectedPath, "*.*", SearchOption.TopDirectoryOnly)
+                        .Where(file => SupportedExtensions.Contains(Path.GetExtension(file)))
+                        .ToList();
+
+                    if (files.Count == 0)
                     {
-                        selectedFiles.Add(file);
-                        listBoxFiles.Items.Add(Path.GetFileName(file));
+                        MessageBox.Show("所选文件夹中未找到支持的图片文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
                     }
+
+                    AddFiles(files);
                 }
-                
-                lblStatus.Text = $"已选择 {selectedFiles.Count} 个文件";
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"读取文件夹失败: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
@@ -83,6 +113,7 @@ public partial class Form1 : Form
 
         btnCompress.Enabled = false;
         btnSelectFiles.Enabled = false;
+        btnSelectFolder.Enabled = false;
         btnClearList.Enabled = false;
         progressBar.Maximum = selectedFiles.Count;
         progressBar.Value = 0;
@@ -129,10 +160,30 @@ public partial class Form1 : Form
 
         btnCompress.Enabled = true;
         btnSelectFiles.Enabled = true;
+        btnSelectFolder.Enabled = true;
         btnClearList.Enabled = true;
 
         lblStatus.Text = $"压缩完成！成功: {successCount}, 失败: {failCount}";
         MessageBox.Show($"压缩完成！\n成功: {successCount}\n失败: {failCount}\n输出目录: {outputFolder}", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void AddFiles(IEnumerable<string> files)
+    {
+        HashSet<string> existingFiles = new HashSet<string>(selectedFiles, StringComparer.OrdinalIgnoreCase);
+
+        foreach (string file in files)
+        {
+            if (existingFiles.Add(file))
+            {
+                selectedFiles.Add(file);
+                listBoxFiles.Items.Add(Path.GetFileName(file));
+            }
+        }
+
+        if (selectedFiles.Count > 0)
+        {
+            lblStatus.Text = $"已选择 {selectedFiles.Count} 个文件";
+        }
     }
 
     private void CompressImage(string sourceFile, string outputFile, int quality)
