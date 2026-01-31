@@ -3,6 +3,29 @@
 
 ## 📁 项目内容 / Projects
 
+### 🍅 PomodoroTimer - 番茄钟
+位置 / Location: `PomodoroTimer/`
+
+一个简单实用的番茄工作法计时器，帮助你更高效地管理时间。
+A simple and practical Pomodoro timer to help you manage your time more efficiently.
+
+**特点 / Features:**
+- ⏱️ 标准番茄工作法（25分钟工作 + 5分钟短休 + 15分钟长休）
+- 📊 实时进度显示和完成统计
+- 🔔 完成提醒功能
+- 🎯 智能推荐下一个时段
+
+**快速开始 / Quick Start:**
+```bash
+cd PomodoroTimer/PomodoroTimer
+dotnet run
+```
+
+**详细说明 / Documentation:**
+- 使用说明: [PomodoroTimer/README.md](PomodoroTimer/README.md)
+
+---
+
 ### ☕ Joy's Coffee Shop Website
 位置 / Location: `website/`
 
