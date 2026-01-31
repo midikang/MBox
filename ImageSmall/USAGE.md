@@ -36,6 +36,11 @@ dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=
 3. 支持的格式：JPG, JPEG, PNG, BMP, GIF
 4. 可以多次点击"选择图片"按钮添加更多文件
 
+### 选择文件夹
+1. 点击"选择文件夹"按钮
+2. 选择包含图片的文件夹（仅导入该文件夹内的图片）
+3. 若文件夹内没有支持的图片，会提示为空
+
 ### 清空列表
 点击"清空列表"按钮可以清除已选择的所有图片。
 
