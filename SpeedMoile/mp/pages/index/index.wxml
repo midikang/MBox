@@ -1,0 +1,60 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">我的截图</text>
+    <button class="btn-primary upload-btn" bindtap="goToUpload">
+      上传截图
+    </button>
+  </view>
+
+  <view class="toolbar" wx:if="{{images.length > 0}}">
+    <text class="count">共 {{images.length}} 张</text>
+    <button 
+      class="btn-danger delete-btn" 
+      bindtap="deleteSelected"
+      disabled="{{selectedImages.length === 0}}"
+    >
+      删除选中 ({{selectedImages.length}})
+    </button>
+  </view>
+
+  <view class="image-grid" wx:if="{{images.length > 0}}">
+    <view 
+      class="image-item {{selectedImages.indexOf(item.id) > -1 ? 'selected' : ''}}"
+      wx:for="{{images}}" 
+      wx:key="id"
+    >
+      <view class="checkbox" bindtap="toggleSelect" data-id="{{item.id}}">
+        <view class="checkbox-inner {{selectedImages.indexOf(item.id) > -1 ? 'checked' : ''}}">
+          <text wx:if="{{selectedImages.indexOf(item.id) > -1}}">✓</text>
+        </view>
+      </view>
+      <image 
+        class="image" 
+        src="{{serverUrl}}{{item.url}}" 
+        mode="aspectFill"
+        bindtap="previewImage"
+        data-url="{{item.url}}"
+      />
+      <view class="image-info">
+        <text class="filename">{{item.filename}}</text>
+        <text class="date">{{item.uploadDate}}</text>
+      </view>
+      <view class="actions">
+        <button 
+          class="action-btn" 
+          bindtap="downloadImage"
+          data-url="{{item.url}}"
+          data-filename="{{item.filename}}"
+        >
+          下载
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-text">暂无截图</text>
+    <text class="empty-hint">点击上传按钮添加截图</text>
+  </view>
+</view>

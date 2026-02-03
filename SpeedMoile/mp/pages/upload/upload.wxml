@@ -1,0 +1,45 @@
+<!--pages/upload/upload.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">上传截图</text>
+  </view>
+
+  <view class="select-area">
+    <button class="btn-primary select-btn" bindtap="chooseImages">
+      选择图片 ({{selectedFiles.length}}/20)
+    </button>
+    <text class="hint">从相册选择截图，最多20张</text>
+  </view>
+
+  <view class="preview-grid" wx:if="{{selectedFiles.length > 0}}">
+    <view 
+      class="preview-item"
+      wx:for="{{selectedFiles}}" 
+      wx:key="index"
+    >
+      <image 
+        class="preview-image" 
+        src="{{item}}" 
+        mode="aspectFill"
+        bindtap="previewImage"
+        data-index="{{index}}"
+      />
+      <view class="remove-btn" bindtap="removeImage" data-index="{{index}}">
+        ×
+      </view>
+    </view>
+  </view>
+
+  <view class="actions" wx:if="{{selectedFiles.length > 0}}">
+    <button class="btn-primary upload-btn" bindtap="uploadImages">
+      上传 {{selectedFiles.length}} 张图片
+    </button>
+  </view>
+
+  <view class="tips">
+    <text class="tips-title">使用提示：</text>
+    <text class="tips-item">• 支持批量选择相册中的截图</text>
+    <text class="tips-item">• 上传后可在电脑端浏览和下载</text>
+    <text class="tips-item">• 电脑端删除后，手机端会同步删除</text>
+  </view>
+</view>
