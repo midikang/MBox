@@ -8,6 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 中间件
+// 注意: 生产环境应添加速率限制中间件，如 express-rate-limit
+// 防止暴力攻击和滥用API
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
