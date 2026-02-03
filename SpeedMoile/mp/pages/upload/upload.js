@@ -9,7 +9,7 @@ Page({
   // 选择图片
   chooseImages() {
     wx.chooseImage({
-      count: 9, // 最多选择9张
+      count: 20, // 最多选择20张
       sizeType: ['original', 'compressed'],
       sourceType: ['album'], // 只从相册选择
       success: (res) => {

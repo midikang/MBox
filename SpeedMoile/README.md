@@ -39,6 +39,7 @@ SpeedMoile/
 │           ├── upload.wxml
 │           ├── upload.wxss
 │           └── upload.json
+│   └── config.js    # 配置文件（环境配置）
 └── api/             # 后端API服务
     ├── server.js    # Express服务器
     ├── package.json # 依赖配置
@@ -72,9 +73,9 @@ npm run dev
 1. 使用微信开发者工具打开 `SpeedMoile/mp` 目录
 
 2. 配置服务器地址：
-   - 在 `app.js` 中修改 `globalData.serverUrl`
-   - 开发环境：`http://localhost:3000`
-   - 生产环境：替换为实际服务器地址
+   - 编辑 `config.js` 文件
+   - 开发环境：`env = 'development'`，使用 `http://localhost:3000`
+   - 生产环境：`env = 'production'`，需要配置 HTTPS 域名
 
 3. 编译运行小程序
 
@@ -223,6 +224,10 @@ GET /api/health
 4. **权限设置**
    - 需要开启相册访问权限
    - 需要开启网络访问权限
+
+5. **依赖版本**
+   - 当前使用 multer 1.x，存在已知安全漏洞
+   - 生产环境建议升级到 multer 2.x
 
 ## 后续优化建议
 

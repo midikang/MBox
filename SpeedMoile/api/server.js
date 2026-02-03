@@ -88,7 +88,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 
     const data = readData();
     const imageInfo = {
-      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      id: Date.now().toString() + Math.random().toString(36).slice(2, 11),
       filename: req.file.originalname,
       savedFilename: req.file.filename,
       url: `/uploads/${req.file.filename}`,
@@ -187,23 +187,21 @@ app.post('/api/images/batch-delete', (req, res) => {
     const data = readData();
     let deletedCount = 0;
     
-    ids.forEach(id => {
-      const imageIndex = data.images.findIndex(img => img.id === id);
+    // 收集要删除的图片信息
+    const imagesToDelete = data.images.filter(img => ids.includes(img.id));
+    
+    // 删除文件
+    imagesToDelete.forEach(image => {
+      const filePath = path.join(__dirname, 'uploads', image.savedFilename);
       
-      if (imageIndex !== -1) {
-        const image = data.images[imageIndex];
-        const filePath = path.join(__dirname, 'uploads', image.savedFilename);
-        
-        // 删除文件
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath);
-        }
-        
-        // 从数据中移除
-        data.images.splice(imageIndex, 1);
-        deletedCount++;
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
       }
+      deletedCount++;
     });
+    
+    // 从数据中移除已删除的图片
+    data.images = data.images.filter(img => !ids.includes(img.id));
     
     if (writeData(data)) {
       res.json({

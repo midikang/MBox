@@ -1,10 +1,13 @@
 // app.js
+const config = require('./config.js');
+
 App({
   globalData: {
-    serverUrl: 'http://localhost:3000' // 开发环境服务器地址，生产环境需要修改
+    serverUrl: config.serverUrl
   },
   
   onLaunch() {
     console.log('截图整理助手启动');
+    console.log('服务器地址:', this.globalData.serverUrl);
   }
 })
