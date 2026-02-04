@@ -27,8 +27,8 @@ python -m http.server 8000
 - 发布演练: [website/WALKTHROUGH.md](website/WALKTHROUGH.md)
 - 项目说明: [website/README.md](website/README.md)
 
-### 📱 SpeedMoile - 截图整理助手
-位置 / Location: `SpeedMoile/`
+### 📱 SpeedMobile - 截图整理助手
+位置 / Location: `SpeedMobile/`
 
 一个微信小程序，用于解决手机截图过多占用空间、手机屏幕太小不便整理的痛点。
 A WeChat mini-program for organizing phone screenshots, solving storage issues and small screen inconvenience.
@@ -42,12 +42,12 @@ A WeChat mini-program for organizing phone screenshots, solving storage issues a
 **快速开始 / Quick Start:**
 ```bash
 # 启动后端服务
-cd SpeedMoile/api
+cd SpeedMobile/api
 npm install
 npm start
 
-# 使用微信开发者工具打开 SpeedMoile/mp 目录
+# 使用微信开发者工具打开 SpeedMobile/mp 目录
 ```
 
 **项目说明 / Documentation:**
-- 详细文档: [SpeedMoile/README.md](SpeedMoile/README.md)
+- 详细文档: [SpeedMobile/README.md](SpeedMobile/README.md)

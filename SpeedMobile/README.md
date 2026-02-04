@@ -1,4 +1,4 @@
-# SpeedMoile - 截图整理助手
+# SpeedMobile - 截图整理助手
 
 一个微信小程序，用于解决手机截图过多占用空间、手机屏幕太小不便整理的痛点。支持手机端批量上传、电脑端浏览下载，并实现双端同步删除。
 
@@ -22,7 +22,7 @@
 ## 项目结构
 
 ```
-SpeedMoile/
+SpeedMobile/
 ├── mp/              # 微信小程序前端
 │   ├── app.js       # 小程序入口
 │   ├── app.json     # 小程序配置
@@ -52,7 +52,7 @@ SpeedMoile/
 
 1. 安装依赖：
 ```bash
-cd SpeedMoile/api
+cd SpeedMobile/api
 npm install
 ```
 
@@ -70,7 +70,7 @@ npm run dev
 
 ### 微信小程序
 
-1. 使用微信开发者工具打开 `SpeedMoile/mp` 目录
+1. 使用微信开发者工具打开 `SpeedMobile/mp` 目录
 
 2. 配置服务器地址：
    - 编辑 `config.js` 文件

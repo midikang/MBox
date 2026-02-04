@@ -1,5 +1,5 @@
 {
-  "name": "speedmoile-api",
+  "name": "speedmobile-api",
   "version": "1.0.0",
   "description": "Backend API for Screenshot Organizer",
   "main": "server.js",
