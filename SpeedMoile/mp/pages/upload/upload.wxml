@@ -40,6 +40,7 @@
     <text class="tips-title">使用提示：</text>
     <text class="tips-item">• 支持批量选择相册中的截图</text>
     <text class="tips-item">• 上传后可在电脑端浏览和下载</text>
-    <text class="tips-item">• 电脑端删除后，手机端会同步删除</text>
+    <text class="tips-item">• 删除操作只删除服务器副本，不会删除手机相册中的原图</text>
+    <text class="tips-item">• 如需释放手机空间，请上传后手动删除相册中的截图</text>
   </view>
 </view>
