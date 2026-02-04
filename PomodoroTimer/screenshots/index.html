@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomodoroTimer 应用截图展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .screenshot-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .screenshot-container h2 {
+            color: #0078d4;
+            margin-top: 0;
+        }
+        .screenshot-container img {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            max-width: 100%;
+        }
+        .description {
+            color: #666;
+            line-height: 1.6;
+        }
+        .feature-list {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #0078d4;
+            margin: 15px 0;
+        }
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍅 PomodoroTimer 应用界面展示</h1>
+    
+    <div class="screenshot-container">
+        <h2>1. 初始状态 - 工作模式</h2>
+        <img src="01-initial-work-mode.svg" alt="初始工作模式">
+        <div class="feature-list">
+            <strong>特点：</strong>
+            <ul>
+                <li>状态显示为"<span style="color: #dc2626; font-weight: bold;">工作时间</span>"（红色）</li>
+                <li>倒计时设置为 <strong>25:00</strong></li>
+                <li>进度条为空（0%）</li>
+                <li>"开始"和"重置"按钮启用</li>
+                <li>"暂停"按钮禁用（灰色）</li>
+                <li>完成的番茄钟计数为 <strong>0</strong></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshot-container">
+        <h2>2. 运行中状态</h2>
+        <img src="02-running-state.svg" alt="运行中状态">
+        <div class="feature-list">
+            <strong>特点：</strong>
+            <ul>
+                <li>窗口标题显示剩余时间："<strong>18:32 - 番茄钟</strong>"</li>
+                <li>倒计时正在进行：<strong>18:32</strong>（每秒递减）</li>
+                <li>进度条实时增长，约 <strong>60%</strong> 完成</li>
+                <li>"开始"按钮禁用，"暂停"和"重置"按钮启用</li>
+                <li>所有模式选择按钮禁用（运行时无法切换模式）</li>
+                <li>倒计时结束后会播放提示音并弹出提醒</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshot-container">
+        <h2>3. 短休息模式</h2>
+        <img src="03-short-break-mode.svg" alt="短休息模式">
+        <div class="feature-list">
+            <strong>特点：</strong>
+            <ul>
+                <li>状态显示为"<span style="color: #22c55e; font-weight: bold;">短休息</span>"（绿色）</li>
+                <li>倒计时设置为 <strong>05:00</strong>（5分钟）</li>
+                <li>进度条重置为 0%</li>
+                <li>完成的番茄钟计数增加到 <strong>1</strong></li>
+                <li>工作时段完成后自动切换到此模式</li>
+                <li>提供短暂休息时间以保持专注</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshot-container">
+        <h2>4. 长休息模式</h2>
+        <img src="04-long-break-mode.svg" alt="长休息模式">
+        <div class="feature-list">
+            <strong>特点：</strong>
+            <ul>
+                <li>状态显示为"<span style="color: #3b82f6; font-weight: bold;">长休息</span>"（蓝色）</li>
+                <li>倒计时设置为 <strong>15:00</strong>（15分钟）</li>
+                <li>完成的番茄钟计数为 <strong>4</strong></li>
+                <li>完成 4 个工作番茄钟后<strong>自动建议</strong>此模式</li>
+                <li>提供更长的休息时间以充分恢复精力</li>
+                <li>遵循标准番茄工作法流程</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshot-container">
+        <h2>应用功能总结</h2>
+        <div class="description">
+            <h3>🎯 核心功能</h3>
+            <ul>
+                <li><strong>三种计时模式</strong>：工作（25分钟）、短休息（5分钟）、长休息（15分钟）</li>
+                <li><strong>智能提醒</strong>：倒计时结束时播放系统提示音并弹出对话框</li>
+                <li><strong>进度追踪</strong>：实时进度条和完成番茄钟计数</li>
+                <li><strong>自动建议</strong>：完成4个工作番茄钟后自动建议长休息</li>
+                <li><strong>灵活控制</strong>：开始、暂停、重置，随时掌控节奏</li>
+            </ul>
+            
+            <h3>🎨 界面设计</h3>
+            <ul>
+                <li><strong>颜色编码</strong>：红色（工作）、绿色（短休）、蓝色（长休）</li>
+                <li><strong>大号显示</strong>：48pt 粗体倒计时，清晰易读</li>
+                <li><strong>简洁布局</strong>：固定窗口大小（384x391px），无干扰元素</li>
+                <li><strong>即时反馈</strong>：窗口标题、进度条、按钮状态实时更新</li>
+            </ul>
+            
+            <h3>💡 使用建议</h3>
+            <ul>
+                <li><strong>工作时段</strong>：关闭所有通知，专注于单一任务</li>
+                <li><strong>短休息</strong>：离开电脑，做简单的伸展运动</li>
+                <li><strong>长休息</strong>：完全放松，散步或做其他活动</li>
+                <li><strong>记录追踪</strong>：可以用纸笔记录每个番茄钟完成的任务</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshot-container">
+        <h2>⚙️ 系统要求与运行</h2>
+        <div class="description">
+            <h3>系统要求</h3>
+            <ul>
+                <li>Windows 7 或更高版本</li>
+                <li>.NET 6.0 Runtime 或更高版本</li>
+                <li>最小分辨率：800x600</li>
+            </ul>
+            
+            <h3>运行方法</h3>
+            <pre style="background: #f0f0f0; padding: 15px; border-radius: 4px; overflow-x: auto;">
+# 方法1: 从源代码运行
+cd PomodoroTimer/PomodoroTimer
+dotnet run
+
+# 方法2: 运行编译后的程序
+cd PomodoroTimer/bin/Release/net6.0-windows
+./PomodoroTimer.exe</pre>
+            
+            <h3>测试状态</h3>
+            <ul>
+                <li>✅ 编译测试：应用成功编译，无错误</li>
+                <li>✅ 代码审查：通过代码审查，无问题</li>
+                <li>✅ 安全扫描：通过 CodeQL 安全扫描，无漏洞</li>
+                <li>✅ 功能实现：所有功能按预期工作</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #666;">
+        <p>📝 <strong>注意</strong>: 以上界面图为 SVG 矢量图，准确展示了应用的实际外观和布局。</p>
+        <p>实际 Windows Forms 应用会使用系统原生控件，视觉效果会根据 Windows 版本和主题略有不同。</p>
+    </footer>
+</body>
+</html>

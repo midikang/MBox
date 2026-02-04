@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="391" viewBox="0 0 384 391">
+  <!-- Window background -->
+  <rect width="384" height="391" fill="#f0f0f0"/>
+  
+  <!-- Title bar -->
+  <rect width="384" height="30" fill="#0078d4"/>
+  <text x="10" y="20" font-family="Arial" font-size="12" fill="white">番茄钟 - Pomodoro Timer</text>
+  
+  <!-- Status label -->
+  <text x="192" y="60" font-family="Arial" font-size="14" fill="#22c55e" text-anchor="middle" font-weight="normal">短休息</text>
+  
+  <!-- Timer display -->
+  <rect x="92" y="90" width="200" height="90" fill="transparent" stroke="#cccccc" stroke-width="1"/>
+  <text x="192" y="155" font-family="Arial" font-size="48" fill="#000000" text-anchor="middle" font-weight="bold">05:00</text>
+  
+  <!-- Progress bar -->
+  <rect x="12" y="190" width="360" height="23" fill="white" stroke="#999999" stroke-width="1"/>
+  <rect x="12" y="190" width="0" height="23" fill="#06b6d4"/>
+  
+  <!-- Session count -->
+  <text x="192" y="235" font-family="Arial" font-size="10" fill="#000000" text-anchor="middle">完成的番茄钟: 1</text>
+  
+  <!-- Mode selection buttons -->
+  <g transform="translate(12, 250)">
+    <!-- Work button -->
+    <rect width="100" height="35" rx="3" fill="white" stroke="#999999" stroke-width="1"/>
+    <text x="50" y="23" font-family="Arial" font-size="11" fill="#000000" text-anchor="middle">工作 25分</text>
+    
+    <!-- Short break button -->
+    <rect x="120" width="100" height="35" rx="3" fill="white" stroke="#999999" stroke-width="1"/>
+    <text x="170" y="23" font-family="Arial" font-size="11" fill="#000000" text-anchor="middle">短休 5分</text>
+    
+    <!-- Long break button -->
+    <rect x="240" width="100" height="35" rx="3" fill="white" stroke="#999999" stroke-width="1"/>
+    <text x="290" y="23" font-family="Arial" font-size="11" fill="#000000" text-anchor="middle">长休 15分</text>
+  </g>
+  
+  <!-- Control buttons -->
+  <g transform="translate(12, 320)">
+    <!-- Start button -->
+    <rect width="100" height="40" rx="3" fill="white" stroke="#999999" stroke-width="1"/>
+    <text x="50" y="27" font-family="Arial" font-size="12" fill="#000000" text-anchor="middle">开始</text>
+    
+    <!-- Pause button (disabled) -->
+    <rect x="120" width="100" height="40" rx="3" fill="#d3d3d3" stroke="#999999" stroke-width="1"/>
+    <text x="170" y="27" font-family="Arial" font-size="12" fill="#808080" text-anchor="middle">暂停</text>
+    
+    <!-- Reset button -->
+    <rect x="240" width="100" height="40" rx="3" fill="white" stroke="#999999" stroke-width="1"/>
+    <text x="290" y="27" font-family="Arial" font-size="12" fill="#000000" text-anchor="middle">重置</text>
+  </g>
+</svg>
