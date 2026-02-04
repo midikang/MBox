@@ -74,3 +74,31 @@ npm start
 
 **项目说明 / Documentation:**
 - 详细文档: [SpeedMobile/README.md](SpeedMobile/README.md)
+
+---
+
+### 🖼️ ImageSmall - 图片压缩工具
+位置 / Location: `ImageSmall/`
+
+一个简单易用的图片批量压缩工具，使用 C# 和 Windows Forms 开发。
+A simple and easy-to-use batch image compression tool developed with C# and Windows Forms.
+
+**特点 / Features:**
+- 📁 支持批量选择和压缩多个图片文件 / Batch select and compress multiple image files
+- 📂 支持选择文件夹批量导入图片 / Support folder selection for batch import
+- 🎚️ 可调节压缩质量（10% - 100%） / Adjustable compression quality (10% - 100%)
+- 📊 实时显示压缩进度 / Real-time compression progress display
+- 💾 自定义输出目录 / Custom output directory
+- 🖼️ 支持多种图片格式：JPG, PNG, BMP, GIF / Support multiple formats: JPG, PNG, BMP, GIF
+
+**快速开始 / Quick Start:**
+```bash
+cd ImageSmall/ImageSmall
+dotnet restore
+dotnet build -c Release
+# 运行 / Run
+dotnet run
+```
+
+**项目说明 / Documentation:**
+- 详细文档: [ImageSmall/README.md](ImageSmall/README.md)
