@@ -1,0 +1,37 @@
+<!--story.wxml-->
+<view class="container">
+  <view class="story-header">
+    <image class="story-image" src="{{story.image}}" mode="aspectFill"></image>
+    <view class="story-meta">
+      <text class="story-title">{{story.title}}</text>
+      <view class="story-tags">
+        <text class="tag" wx:for="{{story.tags}}" wx:key="*this">#{{item}}</text>
+      </view>
+      <text class="story-time">{{story.date}} {{story.time}}</text>
+    </view>
+  </view>
+
+  <view class="story-content">
+    <view class="content-title">📖 AI生成的故事</view>
+    <text class="content-text">{{story.content}}</text>
+  </view>
+
+  <view class="action-bar">
+    <button class="action-btn primary" bindtap="toggleRead" wx:if="{{!isReading}}">
+      <text class="btn-icon">🔊</text>
+      <text>朗读故事</text>
+    </button>
+    <button class="action-btn primary" bindtap="stopRead" wx:else>
+      <text class="btn-icon">⏹️</text>
+      <text>停止朗读</text>
+    </button>
+    <button class="action-btn" bindtap="shareStory">
+      <text class="btn-icon">📤</text>
+      <text>分享</text>
+    </button>
+    <button class="action-btn" bindtap="deleteStory">
+      <text class="btn-icon">🗑️</text>
+      <text>删除</text>
+    </button>
+  </view>
+</view>

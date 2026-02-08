@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">拍读AI</text>
+    <text class="subtitle">拍照绘本 · AI讲故事</text>
+  </view>
+
+  <view class="action-area">
+    <button class="camera-btn" bindtap="takePhoto">
+      <text class="camera-icon">📷</text>
+      <text class="camera-text">拍摄绘本</text>
+    </button>
+  </view>
+
+  <view class="history-section">
+    <view class="section-header">
+      <text class="section-title">绘本故事记录</text>
+      <text class="section-count">共{{storyList.length}}本</text>
+    </view>
+
+    <view class="story-list" wx:if="{{storyList.length > 0}}">
+      <view class="story-item" wx:for="{{storyList}}" wx:key="id" bindtap="viewStory" data-id="{{item.id}}">
+        <image class="story-cover" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="story-info">
+          <text class="story-title">{{item.title}}</text>
+          <text class="story-date">{{item.date}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:else>
+      <text class="empty-icon">📚</text>
+      <text class="empty-text">还没有绘本记录</text>
+      <text class="empty-hint">点击上方按钮开始拍摄绘本吧</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<!--camera.wxml-->
+<view class="container">
+  <view class="camera-wrapper">
+    <camera
+      wx:if="{{!imageTempPath}}"
+      device-position="{{devicePosition}}"
+      flash="{{flash}}"
+      binderror="cameraError"
+      class="camera"
+    >
+      <cover-view class="camera-mask">
+        <cover-view class="mask-top"></cover-view>
+        <cover-view class="mask-bottom"></cover-view>
+      </cover-view>
+    </camera>
+
+    <image
+      wx:if="{{imageTempPath}}"
+      src="{{imageTempPath}}"
+      class="preview-image"
+      mode="aspectFill"
+    ></image>
+  </view>
+
+  <view class="controls">
+    <view class="control-btn" bindtap="switchCamera" wx:if="{{!imageTempPath}}">
+      <text class="control-icon">🔄</text>
+      <text class="control-text">切换</text>
+    </view>
+
+    <button class="capture-btn" bindtap="takePhoto">
+      <text wx:if="{{!imageTempPath}}" class="capture-circle"></text>
+      <text wx:else class="capture-text">重拍</text>
+    </button>
+
+    <view class="control-btn" bindtap="switchFlash" wx:if="{{!imageTempPath}}">
+      <text class="control-icon">{{flash === 'off' ? '🔦' : '⚡'}}</text>
+      <text class="control-text">{{flash === 'off' ? '闪光' : '关闭'}}</text>
+    </view>
+
+    <view class="control-btn" bindtap="confirmPhoto" wx:if="{{imageTempPath}}">
+      <text class="control-icon">✓</text>
+      <text class="control-text">确认</text>
+    </view>
+  </view>
+
+  <view class="tips" wx:if="{{!imageTempPath}}">
+    <text class="tips-text">请将绘本放在取景框内拍摄</text>
+  </view>
+</view>
