@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace ImageSmall;
 
@@ -19,6 +20,18 @@ public partial class Form1 : Form
     {
         InitializeComponent();
         lblQualityValue.Text = trackBarQuality.Value + "%";
+    }
+
+    private string FormatSize(long bytes)
+    {
+        if (bytes < 0) return "0 B";
+        if (bytes < 1024) return $"{bytes} B";
+        double kb = bytes / 1024.0;
+        if (kb < 1024) return $"{kb:0.##} KB";
+        double mb = kb / 1024.0;
+        if (mb < 1024) return $"{mb:0.##} MB";
+        double gb = mb / 1024.0;
+        return $"{gb:0.##} GB";
     }
 
     private void btnSelectFiles_Click(object? sender, EventArgs e)
@@ -127,7 +140,10 @@ public partial class Form1 : Form
             for (int i = 0; i < selectedFiles.Count; i++)
             {
                 string sourceFile = selectedFiles[i];
-                
+                string fileName = Path.GetFileNameWithoutExtension(sourceFile);
+                string extension = Path.GetExtension(sourceFile).ToLower();
+                string outputFile = Path.Combine(outputFolder, $"{fileName}_compressed{extension}");
+
                 this.Invoke((MethodInvoker)delegate
                 {
                     lblStatus.Text = $"正在压缩: {Path.GetFileName(sourceFile)} ({i + 1}/{selectedFiles.Count})";
@@ -135,12 +151,27 @@ public partial class Form1 : Form
 
                 try
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(sourceFile);
-                    string extension = Path.GetExtension(sourceFile).ToLower();
-                    string outputFile = Path.Combine(outputFolder, $"{fileName}_compressed{extension}");
+                    long beforeSize = 0;
+                    try { beforeSize = new FileInfo(sourceFile).Length; } catch { beforeSize = 0; }
 
                     CompressImage(sourceFile, outputFile, quality);
+
+                    long afterSize = 0;
+                    try { afterSize = new FileInfo(outputFile).Length; } catch { afterSize = 0; }
+
                     successCount++;
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        string sizeText = $"{FormatSize(beforeSize)} -> {FormatSize(afterSize)}";
+                        lblStatus.Text = $"已压缩: {Path.GetFileName(sourceFile)} ({i + 1}/{selectedFiles.Count}) 大小: {sizeText}";
+
+                        // 更新列表项，显示前后大小
+                        if (i >= 0 && i < listBoxFiles.Items.Count)
+                        {
+                            listBoxFiles.Items[i] = $"{Path.GetFileName(sourceFile)}  {sizeText}";
+                        }
+                    });
                 }
                 catch (Exception ex)
                 {
