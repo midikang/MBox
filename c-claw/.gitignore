@@ -1,3 +1,4 @@
 obj/
-cclaw
 *.o
+test-output.txt
+
