@@ -1,0 +1,53 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# MSBuild / CMake output
+build/
+out/
+[Bb]in/
+[Oo]bj/
+x64/
+x86/
+ipch/
+*.tlog
+*.lastbuildstate
+*.ilk
+*.obj
+*.pch
+*.pdb
+*.idb
+*.iobj
+*.ipdb
+*.log
+*.tmp
+*.cache
+*.manifest
+*.rsp
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Makefile
+
+# vcpkg local installed artifacts (in-project manifest mode)
+vcpkg_installed/
+
+# Optional: if you keep vcpkg build trees under repo in future
+vcpkg/
+installed/
+buildtrees/
+packages/
+downloads/
+
+# Windows noise
+Thumbs.db
+Desktop.ini

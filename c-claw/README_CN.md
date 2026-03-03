@@ -194,7 +194,7 @@ max_history = 20
 ./cclaw gateway 8080 &
 
 # 添加每小时任务
-./cclaw cron add 3600 "现在几点了？"
+./cclaw cron add 10 "现在几点了？"
 
 # 作为守护进程运行（网关 + 定时任务）
 ./cclaw daemon
