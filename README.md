@@ -3,6 +3,33 @@
 
 ## 📁 项目内容 / Projects
 
+### 🤖 c-claw - 极简C语言AI Agent运行时
+位置 / Location: `c-claw/`
+
+一个纯C语言实现的AI Agent运行时，遵循"少即是多"原则，总代码量仅1256行。
+A pure C AI Agent runtime following the "less is more" philosophy, only 1256 lines of code.
+
+**特点 / Features:**
+- 🚀 零第三方依赖，仅使用系统自带libcurl和pthread / Zero third-party dependencies, only system libcurl and pthread
+- 📦 单一可执行文件，40KB大小 / Single executable binary, 40KB size
+- 🔌 兼容OpenAI/DeepSeek/Ollama等API / Compatible with OpenAI/DeepSeek/Ollama APIs
+- 🌐 原生socket HTTP服务器 / Native socket HTTP server
+- ⏰ 定时任务引擎 / Scheduled task engine
+- 💾 对话记忆持久化 / Conversation memory persistence
+
+**快速开始 / Quick Start:**
+```bash
+cd c-claw
+make
+./cclaw onboard
+./cclaw ask "What is 2+2?"
+```
+
+**详细说明 / Documentation:**
+- 项目文档: [c-claw/README.md](c-claw/README.md)
+
+---
+
 ### 🍅 PomodoroTimer - 番茄钟
 位置 / Location: `PomodoroTimer/`
 
