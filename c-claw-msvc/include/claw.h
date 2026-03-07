@@ -50,6 +50,7 @@ int cmd_ask(const char *prompt);                            /* 单次提问 / Si
 int cmd_gateway(int port);                                  /* 启动HTTP网关 / Start HTTP gateway */
 int cmd_cron_add(int interval, const char *prompt);         /* 添加定时任务 / Add cron task */
 int cmd_daemon(void);                                       /* 后台服务 / Daemon service */
+int cmd_organize(const char *dir, int dry_run);             /* 整理文件夹 / Organize folder */
 
 /* AI服务提供商API / Provider API */
 int provider_init(const Provider *cfg);                     /* 初始化提供商 / Initialize provider */

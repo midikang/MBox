@@ -20,6 +20,7 @@
     <ClCompile Include="src\gateway.c"><Filter>Source Files</Filter></ClCompile>
     <ClCompile Include="src\main.c"><Filter>Source Files</Filter></ClCompile>
     <ClCompile Include="src\memory.c"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="src\organize.c"><Filter>Source Files</Filter></ClCompile>
     <ClCompile Include="src\platform_win.c"><Filter>Source Files</Filter></ClCompile>
     <ClCompile Include="src\provider.c"><Filter>Source Files</Filter></ClCompile>
   </ItemGroup>

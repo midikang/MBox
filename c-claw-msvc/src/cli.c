@@ -8,12 +8,13 @@
 static void print_usage(const char *prog) {
     printf("Usage: %s <command> [options]\n\n", prog);
     printf("Commands:\n");
-    printf("  onboard                    Initialize configuration\n");
-    printf("  chat <prompt>              Interactive chat (with history)\n");
-    printf("  ask <prompt>               Single question (no history)\n");
-    printf("  gateway [port]             Start HTTP gateway (default: 8080)\n");
-    printf("  cron add <interval> <prompt>  Add scheduled task\n");
-    printf("  daemon                     Run background service\n");
+    printf("  onboard                           Initialize configuration\n");
+    printf("  chat <prompt>                     Interactive chat (with history)\n");
+    printf("  ask <prompt>                      Single question (no history)\n");
+    printf("  gateway [port]                    Start HTTP gateway (default: 8080)\n");
+    printf("  cron add <interval> <prompt>      Add scheduled task\n");
+    printf("  daemon                            Run background service\n");
+    printf("  organize [--dry-run] <folder>     Organize folder by file type\n");
     printf("\nExamples:\n");
     printf("  %s onboard\n", prog);
     printf("  %s chat \"Hello, how are you?\"\n", prog);
@@ -21,6 +22,8 @@ static void print_usage(const char *prog) {
     printf("  %s gateway 9000\n", prog);
     printf("  %s cron add 3600 \"Daily summary\"\n", prog);
     printf("  %s daemon\n", prog);
+    printf("  %s organize C:\\Users\\me\\Downloads\n", prog);
+    printf("  %s organize --dry-run C:\\Users\\me\\Downloads\n", prog);
 }
 
 int cli_main(int argc, char **argv) {
@@ -77,6 +80,25 @@ int cli_main(int argc, char **argv) {
         }
     } else if (strcmp(cmd, "daemon") == 0) {
         return cmd_daemon();
+    } else if (strcmp(cmd, "organize") == 0) {
+        int dry_run = 0;
+        const char *target_dir = NULL;
+
+        if (argc >= 3 && strcmp(argv[2], "--dry-run") == 0) {
+            dry_run = 1;
+            if (argc < 4) {
+                fprintf(stderr, "Error: organize requires a folder path\n");
+                return 1;
+            }
+            target_dir = argv[3];
+        } else if (argc >= 3) {
+            target_dir = argv[2];
+        } else {
+            fprintf(stderr, "Error: organize requires a folder path\n");
+            return 1;
+        }
+
+        return cmd_organize(target_dir, dry_run);
     } else {
         fprintf(stderr, "Error: unknown command '%s'\n", cmd);
         print_usage(argv[0]);

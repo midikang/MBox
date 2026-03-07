@@ -106,6 +106,7 @@
     <ClCompile Include="src\gateway.c" />
     <ClCompile Include="src\main.c" />
     <ClCompile Include="src\memory.c" />
+    <ClCompile Include="src\organize.c" />
     <ClCompile Include="src\platform_win.c" />
     <ClCompile Include="src\provider.c" />
   </ItemGroup>
