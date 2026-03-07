@@ -19,6 +19,7 @@ add_executable(cclaw
   src/fs.c
   src/gateway.c
   src/memory.c
+  src/organize.c
   src/provider.c
   src/platform_win.c
 )
